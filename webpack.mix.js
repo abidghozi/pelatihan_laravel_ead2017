@@ -13,3 +13,5 @@ let mix = require('laravel-mix');
 
 mix.js('resources/assets/js/app.js', 'public/js')
    .sass('resources/assets/sass/app.scss', 'public/css');
+   // .css('bower_components/admin-lte/dist/css/adminlte.css.map', 'public/css');
+   // .js('bower_components/admin-lte/dist/js/adminlte.min.js', 'public/js');

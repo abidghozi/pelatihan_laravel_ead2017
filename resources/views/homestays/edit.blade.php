@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <form action="{{ route('homestay.update', ['homestay'=>$homestay->id]) }}" method="post">
     <input type="hidden" name="_method" value="put">
     {{ csrf_field() }}
@@ -28,3 +31,4 @@
         </tr>
     </table>
 </form>
+@endsection
