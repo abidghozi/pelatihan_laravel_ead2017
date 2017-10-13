@@ -1,3 +1,6 @@
+@extends('layouts.app')
+
+@section('content')
 <div align="center" style="padding:5%">
     <table border="1">
         <tr>
@@ -38,3 +41,4 @@
         }
     }
 </script>
+@endsection

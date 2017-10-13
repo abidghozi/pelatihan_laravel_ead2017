@@ -15,4 +15,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('homestay', 'HomestayController');
+Route::group(['middleware' => 'auth'], function(){
+        Route::resource('homestay', 'HomestayController');
+});
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
