@@ -26,6 +26,12 @@ class RoleController extends Controller
     {
         //
         $data = Role::findOrFail($role->id);
-        return view('role.show', ['data' => $data]);
+        $permissions = config('permission-list');
+        return view('role.show', ['data' => $data, 'permissions' => $permissions]);
+    }
+
+    public function update(Request $request, Role $role){
+        $role->syncPermissions($request->input('permissions'));
+        return redirect(route('role.index'));
     }
 }

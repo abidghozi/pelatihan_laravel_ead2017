@@ -16,13 +16,11 @@ Route::get('/', function () {
 });
 
 Route::group(['middleware' => 'auth'], function(){
-        Route::resource('homestay', 'HomestayController');
-        Route::resource('role', 'RoleController');
-        
-        // Route::get('/role', 'RoleController@index')->name('role.index');
-        // Route::get('/role/create', 'RoleController@create')->name('role.create');
-        // Route::post('/role', 'RoleController@Store')->name('role.store');
-        // Route::get('/role/{role}','RoleController@show')->name('role.show');
+    Route::resource('role', 'RoleController');
+});
+
+Route::group(['middleware' => ['auth','permissiongate']], function(){
+    Route::resource('homestay', 'HomestayController');
 });
 
 Auth::routes();

@@ -24,14 +24,26 @@
                 <div class="panel-heading">Available Permission</div>
                 <div class="panel-body">
 
-                    <form action="{{ route('role.store') }}" method="post">
+                    <form action="{{ route('role.update', ['role' => $data->id]) }}" method="post">
                         {{ csrf_field() }}
 
-                        <div class="form-group row">
-                            <label for="nama" class="col-md-4 control-label">Nama Role</label>
-                            <div class="col-md-6">
-                                <input type="text" class="form-control" name="nama" value="{{ $data->name }}" disabled="true">
-                            </div>
+                        <input type="hidden" name="_method" value="PUT">
+                        <div class="form-group row" style="padding:5%;">
+                            <table class="table table-bordered">
+                                @foreach($permissions as $controller => $keys)
+                                <tr>
+                                    <td style="vertical-align: middle;">{{ $controller }}</td>
+                                    <td>
+                                        @foreach($keys as $permission)
+                                        <input style="margin:3%;" type="checkbox" name="permissions[]"
+                                        value="{{ $permission." ".$controller }}"
+                                        {{ $data->hasPermissionTo($permission. " ".$controller) ? "checked" : ""  }}>
+                                        {{ $permission  }}
+                                        @endforeach
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </table>
                         </div>
 
                         <div class="form-group">

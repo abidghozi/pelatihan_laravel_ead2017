@@ -6,13 +6,13 @@
     <table border='0' class="table table-hover">
         <tr>
             <th>Nama</th>
-            <th>Guard Name</th>
+            <th>Total Permission</th>
             <th>Tools</th>
         </tr>
         @foreach ($datas as $data)
         <tr>
             <td><a href="{{ route('role.show', ['role' => $data->id]) }}">{{ $data->name }}</a></td>
-            <td>{{ $data->guard_name }}</td>
+            <td>{{ $data->permissions()->count() }}</td>
             <td width="10%">
                 <center>
                     <form action="{{ route('homestay.destroy', ['homestay' => $data->id]) }}" method="post" onsubmit="">
